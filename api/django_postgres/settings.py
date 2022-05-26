@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'models.user',
-    'models.product'
+    'models.user'
 ]
 
 MIDDLEWARE = [
@@ -78,9 +77,9 @@ WSGI_APPLICATION = 'django_postgres.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangodb',
+        'NAME': 'project_djangodb',
         'USER': 'postgres',
-        'PASSWORD': '123456',
+        'PASSWORD': '<preencher>',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

@@ -52,6 +52,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
 ROOT_URLCONF = 'django_postgres.urls'
 
 TEMPLATES = [
@@ -70,6 +85,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'django_postgres.wsgi.application'
 
 
@@ -81,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'project_djangodb',
         'USER': 'postgres',
-        'PASSWORD': '<preencher>',
+        'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

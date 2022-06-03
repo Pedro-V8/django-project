@@ -29,6 +29,7 @@ class User(AbstractBaseUser):
 
     nome = models.TextField()
     age = models.IntegerField()
+    
 
     objects = UserManager()
 

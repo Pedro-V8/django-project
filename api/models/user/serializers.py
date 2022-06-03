@@ -1,13 +1,17 @@
+from asyncore import read
+from pickletools import read_long1
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from models.posts.serializers import PostsSerializer
 User = get_user_model()
 
 
 class UsuarioSerializer(serializers.ModelSerializer):
+    posts = PostsSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ('email', 'nome', 'age')
+        fields = ('email', 'nome', 'age', 'posts')
 
 
 class RegistroSerializer(serializers.ModelSerializer):

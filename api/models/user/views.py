@@ -48,7 +48,6 @@ class UserDetail(APIView):
         return Response('Deleted')
 
 class LoginView(APIView):
-    #serializer_class = LoginSerializer
 
     def post(self, request):
         serializer = LoginSerializer(data=request.data)

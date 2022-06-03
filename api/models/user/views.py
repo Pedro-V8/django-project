@@ -1,9 +1,11 @@
 from .models import User
-from .serializers import RegistroSerializer, UsuarioSerializer , LoginSerializer
+from .serializers import RegistroSerializer, UsuarioSerializer , LoginSerializer , TokenSerializer
 
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
+from rest_framework.authtoken.models import Token
 
 
 # Create your views here.
@@ -55,11 +57,14 @@ class LoginView(APIView):
         serializer.is_valid(raise_exception=True)
 
         user = serializer.validated_data
-
+        userT = User.objects.get(email=request.data["email"])
         userJSON = UsuarioSerializer(user)
-
+        
+        token, created = Token.objects.get_or_create(user=user)
+        print(token)
         return Response({
-            'user': userJSON.data
+            'user': userJSON.data,
+            'token': token.key
         })
 
         

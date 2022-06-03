@@ -11,7 +11,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
     posts = PostsSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ('email', 'nome', 'age', 'posts')
+        fields = ('id','email', 'nome', 'age', 'posts')
 
 
 class RegistroSerializer(serializers.ModelSerializer):
@@ -50,3 +50,6 @@ class LoginSerializer(serializers.Serializer):
             return user
 
         raise serializers.ValidationError('Incorrect credentials')
+
+class TokenSerializer(serializers.Serializer):
+    token = serializers.CharField()

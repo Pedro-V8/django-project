@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from models.user import urls as user_urls
 from models.posts import urls as posts_urls
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),

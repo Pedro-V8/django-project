@@ -1,18 +1,15 @@
 import './App.css';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import Imagem from "./images/imagem.jpg"
 
+import AuthContext from './context/auth'
 import Typography from '@mui/material/Typography';
 
 
 function Login() {
-
-
-
-
+  const loginData = useContext(AuthContext)
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erroStatus, setErroStatus] = useState(false)
@@ -48,7 +45,8 @@ function Login() {
   const handleSubmit = async () => {
     verifica()
     if (status === true) {
-      alert("oi")
+      await loginData.logIn(email, senha)
+
     } else {
       alert('Dados inválidos, tente novamente')
     }

@@ -1,3 +1,9 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .login {
   display: 'flex';
   justify-content: 'center';
@@ -15,6 +21,7 @@
 .titleContainer {
   padding-bottom: 50px;
   background-color: #FFFEF2;
+  background-image: url("./images/imagem2.jpg");
 }
 
 .line {

@@ -1,0 +1,49 @@
+.login {
+  display: 'flex';
+  justify-content: 'center';
+  height: 60vh;
+  width: 55vw;
+  border-radius: 10px;
+  background-color: #D6F0C8;
+}
+
+.containerC {
+  height: 100%;
+  position: fixed;
+}
+
+.titleContainer {
+  padding-bottom: 50px;
+  background-color: #FFFEF2;
+}
+
+.line {
+  width: 11vw;
+  outline: 0;
+  margin-bottom: 7px;
+  border-top: 1px solid black;
+}
+
+.loginContainer {
+  min-height: 100vh;
+  background-color: #FFFEF2;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginText {
+  padding-bottom: 50px
+}
+
+.emailText {
+  width: 18vw;
+  padding-bottom: 20px;
+}
+
+.senhaText {
+  width: 18vw;
+  padding-bottom: 30px
+}

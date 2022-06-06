@@ -45,7 +45,14 @@ function Login() {
   const handleSubmit = async () => {
     verifica()
     if (status === true) {
-      await loginData.logIn(email, senha)
+      try {
+        await loginData.logIn(email, senha) 
+        //console.log(loginData.user.nome)
+        alert(`Logado ${loginData.user.nome}`)
+      } catch (error) {
+       alert(error)
+        
+      }
 
     } else {
       alert('Dados inválidos, tente novamente')

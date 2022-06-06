@@ -85,6 +85,3 @@ class LoginView(APIView):
             'user': userJSON.data,
             'token': token.key
         })
-
-        
-        

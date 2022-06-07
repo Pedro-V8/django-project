@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AuthProvider } from './context/auth'
-
+import RoutesT from './Routes';
 import Login from './Login';
 import reportWebVitals from './reportWebVitals';
 
@@ -10,7 +10,8 @@ root.render(
 
   <AuthProvider>
     <React.StrictMode>
-      <Login />
+      <RoutesT />
+
     </React.StrictMode>
   </AuthProvider>
 

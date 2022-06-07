@@ -26,12 +26,11 @@ export function AuthProvider({ children }) {
                 password: senha,
             })
                 .then(({ data, status }) => {
-                    console.log(data)
                     const obj = { data, status }
                     return obj
                 })
         } catch (error) {
-            throw new Error(`Erro ao fazer login, email ou senha incorretos... \nLog: ${error}`)
+            throw new Error(`Erro ao fazer login, email ou senha incorretos...`) //\nLog: ${error}`)
         }
 
         if (response && response.status === 200) {

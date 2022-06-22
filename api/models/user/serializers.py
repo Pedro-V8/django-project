@@ -11,13 +11,13 @@ class UsuarioSerializer(serializers.ModelSerializer):
     posts = PostsSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ('id','email', 'nome', 'age', 'posts')
+        fields = ('id','email', 'nome', 'age', 'posts' ,'nome_usuario','bio')
 
 
 class RegistroSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'email', 'nome', 'age', 'password')
+        fields = ('id', 'email', 'nome', 'password' ,'nome_usuario','bio','age')
         extra_kwargs = {'password': {'write_only': True}}
 
     def validate(self, data):
@@ -28,12 +28,16 @@ class RegistroSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         email = validated_data['email']
         nome = validated_data['nome']
+        nome_usuario = validated_data['nome_usuario']
         password = validated_data['password']
         age = validated_data['age']
+        bio = validated_data['bio']
 
         user = User.objects.create_user(email,
                                         nome,
+                                        nome_usuario,
                                         password,
+                                        bio,
                                         age)
 
         return user

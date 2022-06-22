@@ -8,7 +8,9 @@ class UserManager(BaseUserManager):
     def create_user(self,
                     email,
                     nome,
+                    nome_usuario,
                     password,
+                    bio,
                     age):
 
         if not email or not password:
@@ -17,6 +19,8 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
             nome=nome,
+            nome_usuario=nome_usuario,
+            bio=bio,
             age=age
         )
 
@@ -28,8 +32,9 @@ class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
 
     nome = models.TextField()
+    nome_usuario = models.TextField()
     age = models.IntegerField()
-    
+    bio = models.TextField()
 
     objects = UserManager()
 

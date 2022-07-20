@@ -1,16 +1,25 @@
-from .models import User
-from .serializers import RegistroSerializer, UsuarioSerializer , LoginSerializer , TokenSerializer
-
+from django.views import View
+from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-
 from rest_framework.authtoken.models import Token
 
+from .models import User
+from .serializers import RegistroSerializer, UsuarioSerializer , LoginSerializer , TokenSerializer
 
 # Create your views here.
+class InitialPage(View):
+    template = 'index.html'
+    def get(self, request):
+        teste = {
+            'name': "Pedro",
+            'age': 18
+        }
+        return render(request , self.template, teste)
+
 class UserView(APIView):
     permission_classes = (IsAuthenticated,)
     def get(self , request , format=None):
@@ -80,7 +89,7 @@ class LoginView(APIView):
         userJSON = UsuarioSerializer(user)
         
         token, created = Token.objects.get_or_create(user=user)
-        print(token)
+        
         return Response({
             'user': userJSON.data,
             'token': token.key

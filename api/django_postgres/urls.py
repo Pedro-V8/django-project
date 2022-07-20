@@ -18,8 +18,9 @@ from django.urls import path, include
 from models.user import urls as user_urls
 from models.posts import urls as posts_urls
 from rest_framework.authtoken import views
-
+from models.user import views
 urlpatterns = [
+    path('', views.InitialPage.as_view()),
     path('admin/', admin.site.urls),
     path('users/', include(user_urls)),
     path('posts/', include(posts_urls))

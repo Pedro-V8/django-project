@@ -1,7 +1,5 @@
-from django.shortcuts import render
-from matplotlib.pyplot import title
+
 from rest_framework.response import Response
-from yaml import serialize
 from .serializers import PostsSerializer , RegisterOrUpdatePostsSerializer
 from rest_framework.views import APIView
 from models.posts.models import Post
@@ -16,20 +14,20 @@ class PostsView(APIView):
         serializer = RegisterOrUpdatePostsSerializer(data=request.data)
         
         if serializer.is_valid(raise_exception=True):
-            try:
-                user = User.objects.get(email=request.data["user_email"])
+
+            user = User.objects.get(email=request.data["user_email"])
                 
             
-                post = Post.objects.create(
-                    title=request.data["title"], 
-                    content=request.data["content"],
-                    user=user)
-                result = PostsSerializer(data=post)
+            post = Post.objects.create(
+                title=request.data["title"], 
+                content=request.data["content"],
+                user=user)
+            postJson = PostsSerializer(post)
                 
-                return Response(result)
+            return Response(postJson.data)
                 
-            except:
-                return Response("Erro, user nao encontrado")
+
+            
             
 
         return Response("ok")
@@ -54,6 +52,3 @@ class PostDetailView(APIView):
         post = Post.objects.get(id=pk)
         post.delete()
         return Response("Deleted")
-
-
-
